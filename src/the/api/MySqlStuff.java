@@ -7,6 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap; 
+import java.util.Map;
+import java.util.ArrayList;
+import org.json.*;
+
+import org.json.JSONObject;
+
 
 public class MySqlStuff {
 	  private Connection connect = null;
@@ -14,11 +24,15 @@ public class MySqlStuff {
 	  private PreparedStatement preparedStatement = null;
 	  private ResultSet resultSet = null;
 	  
+	  public MySqlStuff() throws Exception{
+		  
+		  Class.forName("com.mysql.jdbc.Driver");
+
+		  connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/api", "root", "password");
+	  }
+	  
 	  public int checkLogin(String username, String password) throws Exception{
 		  try {
-			  Class.forName("com.mysql.jdbc.Driver");
-
-			  connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/api", "root", "password");
 			  
 			  preparedStatement = connect.prepareStatement("select count(username) from api.users where username = ? and password = ?");
 			  preparedStatement.setString(1, username);
@@ -34,7 +48,7 @@ public class MySqlStuff {
 		  } catch (Exception e) {
 			  throw e;
 		  } finally {
-
+			  //Once, I am done testing this prototype, I'll close connection here
 		  }
 
 	  }
@@ -42,10 +56,7 @@ public class MySqlStuff {
 		  try {
 			  
 			  int checkData = checkLogin(username, password);
-			  
-			  Class.forName("com.mysql.jdbc.Driver");
-			  connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/api", "root", "password");
-			  
+		  
 			  if (checkData < 1){
 				  preparedStatement = connect.prepareStatement("INSERT INTO users (username, password, unique_id) VALUES (?,?,?)");
 				  preparedStatement.setString(1, username);
@@ -64,7 +75,35 @@ public class MySqlStuff {
 			  throw e;
 		  
 		  } finally {
+			//Once, I am done testing this prototype, I'll close connection here
+		  }
+	  }
+	  
+	  public String displayUsers() throws Exception{
+		  
+		  List<String> theString = new ArrayList();
+		  try{
+			  
+			  statement = connect.createStatement();
+			  resultSet = statement.executeQuery("select username from users");
+			  
+			  while (resultSet.next()) {
 
+				  String user = resultSet.getString("username");
+
+				  theString.add(user);
+				
+			  }
+		  JSONArray jsonA = new JSONArray(theString);
+				
+		  return jsonA.toString();
+
+		  }
+		  catch(Exception e){
+			  throw e;
+		  }
+		  finally {
+			//Once, I am done testing this prototype, I'll close connection here 
 		  }
 	  }
 

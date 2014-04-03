@@ -28,11 +28,11 @@
    <ns2:parameter qname="ns1:password" type="xsd:string"/>
   </ns2:operation>
   <ns1:parameter name="allowedMethods" value="checkLogin"/>
-  <ns1:parameter name="wsdlPortType" value="Login"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
-  <ns1:parameter name="schemaQualified" value="http://api.the"/>
-  <ns1:parameter name="wsdlServicePort" value="Login"/>
+  <ns1:parameter name="wsdlPortType" value="Login"/>
   <ns1:parameter name="className" value="the.api.Login"/>
+  <ns1:parameter name="wsdlServicePort" value="Login"/>
+  <ns1:parameter name="schemaQualified" value="http://api.the"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://api.the"/>
   <ns1:parameter name="wsdlServiceElement" value="LoginService"/>
  </ns1:service>
@@ -55,6 +55,17 @@
   <ns1:parameter name="schemaQualified" value="http://api.the"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://api.the"/>
   <ns1:parameter name="wsdlServiceElement" value="RegisterService"/>
+ </ns1:service>
+ <ns1:service name="ShowUsers" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="doIt" qname="ns3:doIt" returnQName="ns3:doItReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://api.the" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="doIt"/>
+  <ns1:parameter name="wsdlPortType" value="ShowUsers"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://api.the"/>
+  <ns1:parameter name="wsdlServicePort" value="ShowUsers"/>
+  <ns1:parameter name="className" value="the.api.ShowUsers"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://api.the"/>
+  <ns1:parameter name="wsdlServiceElement" value="ShowUsersService"/>
  </ns1:service>
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
