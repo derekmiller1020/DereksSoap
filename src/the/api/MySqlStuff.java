@@ -10,12 +10,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap; 
-import java.util.Map;
 import java.util.ArrayList;
 import org.json.*;
-
-import org.json.JSONObject;
 
 
 public class MySqlStuff {
@@ -106,5 +102,19 @@ public class MySqlStuff {
 			//Once, I am done testing this prototype, I'll close connection here 
 		  }
 	  }
-
+	  
+	  public String insertInfo(Map<String,String> theData) throws Exception {
+		  
+		  String sql = "insert into stuff(unique_id, music, movie, book, biography) VALUES( ?, ?, ?, ?, ?)";
+		  preparedStatement = connect.prepareStatement(sql);
+		  preparedStatement.setString(1, theData.get("unique_id"));
+		  preparedStatement.setString(2, theData.get("music"));
+		  preparedStatement.setString(3, theData.get("movie"));
+		  preparedStatement.setString(4, theData.get("book"));
+		  preparedStatement.setString(5, theData.get("biography"));
+		  
+		  preparedStatement.executeUpdate();
+		  
+		  return "Your data has been inserted";
+	  }
 }

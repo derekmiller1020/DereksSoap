@@ -1,6 +1,8 @@
 package the.api;
 
 import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TheAction {
 
@@ -52,6 +54,21 @@ public class TheAction {
 		} finally {
 			//figure out what I want to finally do
 		}
+		
+	}
+	
+	public String insertInfo(String unique_id, String movie, String music, String book, String biography) throws Exception{
+		MySqlStuff theStuff = new MySqlStuff();
+		
+		Map<String,String> theData = new HashMap<String,String>();
+		theData.put("unique_id", unique_id);
+		theData.put("movie", movie);
+		theData.put("music", music);
+		theData.put("book", book);
+		theData.put("biography", biography);
+		
+		String theReturn = theStuff.insertInfo(theData); 
+		return theReturn;
 		
 	}
 	

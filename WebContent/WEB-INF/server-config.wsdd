@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -27,12 +27,19 @@
    <ns2:parameter qname="ns1:username" type="xsd:string"/>
    <ns2:parameter qname="ns1:password" type="xsd:string"/>
   </ns2:operation>
-  <ns1:operation name="doIt" qname="ns2:doIt" returnQName="ns2:doItReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://api.the" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="checkLogin" qname="ns3:checkLogin" returnQName="ns3:checkLoginReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://api.the" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns3:username" type="xsd:string"/>
-   <ns1:parameter qname="ns3:password" type="xsd:string"/>
+  <ns1:operation name="checkLogin" qname="ns2:checkLogin" returnQName="ns2:checkLoginReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://api.the" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:username" type="xsd:string"/>
+   <ns1:parameter qname="ns2:password" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="doIt register checkLogin"/>
+  <ns1:operation name="insertInfo" qname="ns3:insertInfo" returnQName="ns3:insertInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://api.the" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:unique_id" type="xsd:string"/>
+   <ns1:parameter qname="ns3:movie" type="xsd:string"/>
+   <ns1:parameter qname="ns3:music" type="xsd:string"/>
+   <ns1:parameter qname="ns3:book" type="xsd:string"/>
+   <ns1:parameter qname="ns3:biography" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="doIt" qname="ns4:doIt" returnQName="ns4:doItReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://api.the" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="doIt register insertInfo checkLogin"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="TheAction"/>
   <ns1:parameter name="className" value="the.api.TheAction"/>

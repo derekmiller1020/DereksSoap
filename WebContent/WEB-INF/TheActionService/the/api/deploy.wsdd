@@ -14,13 +14,20 @@
         <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
         <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
       </operation>
-      <operation xmlns:operNS="http://api.the" xmlns:retNS="http://api.the" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="doIt" qname="operNS:doIt" returnQName="retNS:doItReturn" returnType="rtns:string" soapAction="">
-      </operation>
       <operation xmlns:operNS="http://api.the" xmlns:retNS="http://api.the" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkLogin" qname="operNS:checkLogin" returnQName="retNS:checkLoginReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
         <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="doIt register checkLogin"/>
+      <operation xmlns:operNS="http://api.the" xmlns:retNS="http://api.the" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertInfo" qname="operNS:insertInfo" returnQName="retNS:insertInfoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:unique_id" type="tns:string"/>
+        <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:movie" type="tns:string"/>
+        <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:music" type="tns:string"/>
+        <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:book" type="tns:string"/>
+        <parameter xmlns:pns="http://api.the" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:biography" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://api.the" xmlns:retNS="http://api.the" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="doIt" qname="operNS:doIt" returnQName="retNS:doItReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="doIt register insertInfo checkLogin"/>
 
   </service>
 </deployment>
